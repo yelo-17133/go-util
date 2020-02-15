@@ -4,7 +4,7 @@ import "testing"
 
 func TestStringBuilder_Append(t *testing.T) {
 	sb := NewStringBuilder()
-	for i := 0; i < 1000; i ++ {
+	for i := 0; i < 1000; i++ {
 		if i == 0 {
 			sb.Append(Rand(6))
 		} else {
