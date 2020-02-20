@@ -2,8 +2,8 @@ package strUtil
 
 import (
 	"fmt"
-	"go-util/jsonUtil"
 	"testing"
+	"yelo/go-util/jsonUtil"
 )
 
 func TestSplitToInt(t *testing.T) {

@@ -3,14 +3,14 @@ package distdCache
 import (
 	"fmt"
 	"github.com/go-redis/redis"
-	"go-util/jsonUtil"
-	"go-util/redisLock"
-	"go-util/taskQueue/chanTaskQueue"
-	"go-util/timeRoundedCounter"
-	"go-util/timeUtil"
 	"strings"
 	"sync"
 	"time"
+	"yelo/go-util/jsonUtil"
+	"yelo/go-util/redisLock"
+	"yelo/go-util/taskQueue/chanTaskQueue"
+	"yelo/go-util/timeRoundedCounter"
+	"yelo/go-util/timeUtil"
 )
 
 const (

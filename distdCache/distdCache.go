@@ -53,12 +53,12 @@ package distdCache
 
 import (
 	"github.com/go-redis/redis"
-	"go-util/log"
-	"go-util/redisLock"
-	"go-util/strUtil"
-	"go-util/timeUtil"
 	"strings"
 	"time"
+	"yelo/go-util/log"
+	"yelo/go-util/redisLock"
+	"yelo/go-util/strUtil"
+	"yelo/go-util/timeUtil"
 )
 
 const (

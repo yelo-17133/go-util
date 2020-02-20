@@ -3,9 +3,9 @@ package redisLock
 import (
 	"fmt"
 	"github.com/go-redis/redis"
-	"go-util/_utilTest"
 	"testing"
 	"time"
+	"yelo/go-util/_utilTest"
 )
 
 func TestMain(m *testing.M) {

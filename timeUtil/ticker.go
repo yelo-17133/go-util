@@ -9,11 +9,11 @@ package timeUtil
 import (
 	"fmt"
 	"math"
-	"go-util/runtimeUtil"
 	"os"
 	"runtime/debug"
 	"sync"
 	"time"
+	"yelo/go-util/runtimeUtil"
 )
 
 type Ticker interface {

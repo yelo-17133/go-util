@@ -5,11 +5,11 @@ package convertor
 
 import (
 	"fmt"
-	"go-util/jsonUtil"
-	"go-util/timeUtil"
 	"strconv"
 	"strings"
 	"time"
+	"yelo/go-util/jsonUtil"
+	"yelo/go-util/timeUtil"
 )
 
 func ToBool(a interface{}) (bool, error) {

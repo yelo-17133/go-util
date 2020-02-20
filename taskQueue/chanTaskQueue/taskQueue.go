@@ -2,14 +2,14 @@ package chanTaskQueue
 
 import (
 	"fmt"
-	"go-util/mathUtil"
-	"go-util/osUtil"
-	"go-util/timeRoundedCounter"
 	"os"
 	"sort"
 	"sync"
 	"sync/atomic"
 	"time"
+	"yelo/go-util/mathUtil"
+	"yelo/go-util/osUtil"
+	"yelo/go-util/timeRoundedCounter"
 )
 
 const (

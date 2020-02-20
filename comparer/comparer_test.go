@@ -2,8 +2,8 @@ package comparer
 
 import (
 	"fmt"
-	"go-util/convertor"
 	"testing"
+	"yelo/go-util/convertor"
 )
 
 func TestCompare(t *testing.T) {

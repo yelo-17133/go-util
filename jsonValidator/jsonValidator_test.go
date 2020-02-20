@@ -2,9 +2,9 @@ package jsonValidator
 
 import (
 	"fmt"
-	"go-util/convertor"
-	"go-util/jsonUtil"
 	"testing"
+	"yelo/go-util/convertor"
+	"yelo/go-util/jsonUtil"
 )
 
 func TestValidator_GetValue(t *testing.T) {

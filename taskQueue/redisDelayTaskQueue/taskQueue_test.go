@@ -3,11 +3,11 @@ package redisDelayTaskQueue
 import (
 	"fmt"
 	"github.com/go-redis/redis"
-	"go-util/_utilTest"
 	"strconv"
 	"sync/atomic"
 	"testing"
 	"time"
+	"yelo/go-util/_utilTest"
 )
 
 func TestMain(m *testing.M) {

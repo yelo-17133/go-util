@@ -16,15 +16,15 @@ package redisTaskQueue
 import (
 	"fmt"
 	"github.com/go-redis/redis"
-	"go-util/osUtil"
-	"go-util/redisLock"
-	"go-util/timeRoundedCounter"
 	"os"
 	"runtime/debug"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+	"yelo/go-util/osUtil"
+	"yelo/go-util/redisLock"
+	"yelo/go-util/timeRoundedCounter"
 )
 
 type Queue interface {

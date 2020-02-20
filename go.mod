@@ -1,4 +1,4 @@
-module go-util
+module yelo/go-util
 
 go 1.12
 

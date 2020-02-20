@@ -1,8 +1,8 @@
 package deepcopy
 
 import (
-	"go-util/jsonUtil"
 	"testing"
+	"yelo/go-util/jsonUtil"
 )
 
 func TestCopyNil(t *testing.T) {

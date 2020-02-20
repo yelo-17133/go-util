@@ -2,9 +2,9 @@ package textSimilarity
 
 import (
 	"bytes"
-	"go-util/arrUtil"
 	"math"
 	"sort"
+	"yelo/go-util/arrUtil"
 )
 
 type TextSimilarity interface {

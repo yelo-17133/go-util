@@ -17,14 +17,14 @@ import (
 	"net"
 	"net/http"
 	"net/url"
-	"go-util/arrUtil"
-	"go-util/jsonUtil"
-	"go-util/strUtil"
 	"regexp"
 	"sort"
 	"strings"
 	"sync"
 	"time"
+	"yelo/go-util/arrUtil"
+	"yelo/go-util/jsonUtil"
+	"yelo/go-util/strUtil"
 )
 
 // HTTP 客户端类，用户封装 HTTP 请求

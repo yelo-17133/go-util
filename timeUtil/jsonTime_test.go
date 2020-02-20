@@ -2,11 +2,11 @@ package timeUtil
 
 import (
 	"fmt"
-	"go-util/_utilTest"
-	"go-util/jsonUtil"
 	"reflect"
 	"testing"
 	"time"
+	"yelo/go-util/_utilTest"
+	"yelo/go-util/jsonUtil"
 )
 
 func TestMain(m *testing.M) {

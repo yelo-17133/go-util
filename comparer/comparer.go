@@ -11,8 +11,8 @@ package comparer
 
 import (
 	"fmt"
-	"go-util/convertor"
 	"strings"
+	"yelo/go-util/convertor"
 )
 
 const (

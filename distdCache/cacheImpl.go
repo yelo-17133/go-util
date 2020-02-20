@@ -5,9 +5,6 @@ import (
 	"fmt"
 	"github.com/go-redis/redis"
 	"hash/crc32"
-	"go-util/convertor"
-	"go-util/jsonUtil"
-	"go-util/timeUtil"
 	"os"
 	"reflect"
 	"runtime/debug"
@@ -16,6 +13,9 @@ import (
 	"strings"
 	"sync"
 	"time"
+	"yelo/go-util/convertor"
+	"yelo/go-util/jsonUtil"
+	"yelo/go-util/timeUtil"
 )
 
 type cacheImpl struct {
