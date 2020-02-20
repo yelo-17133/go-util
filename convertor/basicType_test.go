@@ -13,7 +13,7 @@ func TestGetBasicType(t *testing.T) {
 		val, expectT := arr[0], BasicType(arr[1].(int))
 		gotT, _, _ := GetBasicType(val)
 		if gotT != expectT {
-			t.Error(fmt.Errorf("assert faild: expect %v, bug %v, val=%v", expectT.String(), gotT.String(), MustToString(val)))
+			t.Error(fmt.Errorf("assert faild: expect %v, bug %v, val=%v", expectT.String(), gotT.String(), ToStringNoError(val)))
 		}
 	}
 }

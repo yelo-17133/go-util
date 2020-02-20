@@ -1,3 +1,8 @@
+// 基于 channel 实现的异步队列。
+// 在异步处理数据时，一般针对每个数据启动一个协程来处理该数据。比如我们会监听某个消息队列，在消息队列中有新数据到达时就启动携程来处理他。
+// 这种处理方式一般情况下不会有问题，但如果消息队列中的数据非常频繁、且每次数据处理耗时非常短，则此时会因为频繁的协程切换而导致浪费系统性能。协程的代价虽然比线程要少，但切换仍然有代价。
+// 此时，一个更好的做法，就是使用 channel 处理，启动一个协程来处理该 chanel。这样可以避免频繁的协程切换。
+// 同时，还可以通过控制 channel 大小来做服务容量限制，防止雪崩效应产生。
 package chanTaskQueue
 
 import (
@@ -109,7 +114,6 @@ var (
 	queueId         = int32(1)
 	activeQueue     = make(map[int32]*queueImpl, 32)
 	activeQueueLock = sync.RWMutex{}
-	once            = sync.Once{}
 )
 
 func init() {

@@ -92,9 +92,9 @@ func TestValidator_Validate_1(t *testing.T) {
 
 		ok, err := validator.Validate(path, opr, val, 0)
 		if err != nil {
-			t.Error(fmt.Errorf("error occured: %v，path=%v, opr=%v, val=%v", err, path, opr, convertor.MustToString(val)))
+			t.Error(fmt.Errorf("error occured: %v，path=%v, opr=%v, val=%v", err, path, opr, convertor.ToStringNoError(val)))
 		} else if ok != expectOk {
-			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.MustToString(val)))
+			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.ToStringNoError(val)))
 		}
 	}
 }
@@ -117,9 +117,9 @@ func TestValidator_Validate_2(t *testing.T) {
 
 		ok, err := validator.Validate(path, opr, val, 0)
 		if err != nil {
-			t.Error(fmt.Errorf("error occured: %v，path=%v, opr=%v, val=%v", err, path, opr, convertor.MustToString(val)))
+			t.Error(fmt.Errorf("error occured: %v，path=%v, opr=%v, val=%v", err, path, opr, convertor.ToStringNoError(val)))
 		} else if ok != expectOk {
-			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.MustToString(val)))
+			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.ToStringNoError(val)))
 		}
 	}
 }
@@ -141,7 +141,7 @@ func TestValidator_Validate_3(t *testing.T) {
 
 		ok, _ := validator.Validate(path, opr, val, 0)
 		if ok != expectOk {
-			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.MustToString(val)))
+			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.ToStringNoError(val)))
 		}
 	}
 }
@@ -163,9 +163,9 @@ func TestValidator_Validate_4(t *testing.T) {
 
 		ok, err := validator.Validate(path, opr, val, 0)
 		if err != nil {
-			t.Error(fmt.Errorf("error occured: %v，path=%v, opr=%v, val=%v", err, path, opr, convertor.MustToString(val)))
+			t.Error(fmt.Errorf("error occured: %v，path=%v, opr=%v, val=%v", err, path, opr, convertor.ToStringNoError(val)))
 		} else if ok != expectOk {
-			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.MustToString(val)))
+			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.ToStringNoError(val)))
 		}
 	}
 }
@@ -188,9 +188,9 @@ func TestValidator_Validate_5(t *testing.T) {
 
 		ok, err := validator.Validate(path, opr, val, 0)
 		if err != nil {
-			t.Error(fmt.Errorf("error occured: %v，path=%v, opr=%v, val=%v", err, path, opr, convertor.MustToString(val)))
+			t.Error(fmt.Errorf("error occured: %v，path=%v, opr=%v, val=%v", err, path, opr, convertor.ToStringNoError(val)))
 		} else if ok != expectOk {
-			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.MustToString(val)))
+			t.Error(fmt.Errorf("assert faild: expect %v, but %v，path=%v, opr=%v, val=%v", expectOk, ok, path, opr, convertor.ToStringNoError(val)))
 		}
 	}
 }
@@ -212,7 +212,7 @@ func TestValidator_Validate_Error(t *testing.T) {
 
 		ok, err := validator.Validate(path, opr, val, 0)
 		if err == nil {
-			t.Error(fmt.Errorf("should have error: path=%v, opr=%v, val=%v, ok=%v", path, opr, convertor.MustToString(val), ok))
+			t.Error(fmt.Errorf("should have error: path=%v, opr=%v, val=%v, ok=%v", path, opr, convertor.ToStringNoError(val), ok))
 		}
 	}
 }

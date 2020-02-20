@@ -23,7 +23,7 @@ func Md5(s string) string {
 }
 
 // ------------------------------------------------------------------------------
-func ReplaceMap(str string, replace map[string]string) string {
+func Replace(str string, replace map[string]string) string {
 	for key, val := range replace {
 		str = strings.Replace(str, key, val, -1)
 	}

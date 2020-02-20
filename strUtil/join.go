@@ -28,11 +28,11 @@ func Join(a interface{}, sep string, f func(i int, a interface{}) string) string
 		panic("参数 a 必须是数组或切片")
 	}
 
-	len := reflectVal.Len()
-	arr := make([]string, len)
-	for i := 0; i < len; i++ {
+	valLen := reflectVal.Len()
+	arr := make([]string, valLen)
+	for i := 0; i < valLen; i++ {
 		if f == nil {
-			arr[i] = convertor.MustToString(reflectVal.Index(i).Interface())
+			arr[i] = convertor.ToStringNoError(reflectVal.Index(i).Interface())
 		} else {
 			arr[i] = f(i, reflectVal.Index(i).Interface())
 		}

@@ -67,12 +67,12 @@ func KebabToCamel(s string) string {
 	return strings.Join(arr, "")
 }
 
-func KebabToUnderline(s string) string {
+func KebabToSnake(s string) string {
 	return strings.ToLower(strings.Replace(s, "-", "_", -1))
 }
 
 // 下划线小写格式转换为 Camel 格式
-func LowerUnderlineToCamel(s string) string {
+func SnakeToCamel(s string) string {
 	if s != "" {
 		arr := Map(strings.Split(s, "_"), func(i int, s string) string {
 			if i == 0 {
@@ -87,7 +87,7 @@ func LowerUnderlineToCamel(s string) string {
 }
 
 // 下划线小写格式转换为 Pascal 格式
-func LowerUnderlineToPascal(s string) string {
+func SnakeToPascal(s string) string {
 	if s != "" {
 		arr := Map(strings.Split(s, "_"), func(_ int, s string) string {
 			return UcFirst(s)
@@ -97,7 +97,7 @@ func LowerUnderlineToPascal(s string) string {
 	return ""
 }
 
-func LowerUnderlineToUpperKebab(s string) string {
+func SnakeToUpperKebab(s string) string {
 	if s != "" {
 		arr := Map(strings.Split(s, "_"), func(_ int, s string) string {
 			return UcFirst(s)

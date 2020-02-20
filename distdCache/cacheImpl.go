@@ -252,7 +252,7 @@ func (this *cacheImpl) doEdit(opr, key string, val *CacheEntity, source string) 
 			Name:     this.name,
 			Opr:      opr,
 			Key:      key,
-			Val:      convertor.MustToString(val.Data),
+			Val:      convertor.ToStringNoError(val.Data),
 			Time:     val.Time,
 		})).Err()
 		if err != nil {
@@ -395,7 +395,7 @@ func (this *cacheImpl) doSyncBucket(index int) error {
 		if err := jsonUtil.UnmarshalFromString(valStr, val); err != nil {
 			continue
 		} else if val.Data != nil {
-			val.Data = this.newEntity(convertor.MustToString(val.Data))
+			val.Data = this.newEntity(convertor.ToStringNoError(val.Data))
 		}
 		localVal, ok := bucket.data[key]
 		if !ok || !reflect.DeepEqual(localVal.Data, val.Data) {
@@ -479,7 +479,7 @@ func (this *cacheImpl) updateEtag(bucket *bucket, nowMs int64) bool {
 				// 计算 ETag 时会按 SyncCheckInterval 取整，计算在整点之前的数据对应的 ETag。所以 >etagTime 的忽略不参与 Etag 计算
 				continue
 			} else if v.Data != nil {
-				arr = append(arr, k+"="+convertor.MustToString(v))
+				arr = append(arr, k+"="+convertor.ToStringNoError(v))
 			} else if v.Time < delIfTimeBefore {
 				keysToDel = append(keysToDel, k)
 			}

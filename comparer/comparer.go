@@ -43,12 +43,12 @@ func Compare(a, b interface{}, opr string, options ...int) (bool, error) {
 	}
 
 	if basicTypeA == convertor.BasicType_Unknown {
-		return false, fmt.Errorf(`不支持对 %s(%s) 进行运算`, strings.Trim(reflectTypeA.PkgPath()+"."+reflectTypeA.Name(), "."), convertor.MustToString(a))
+		return false, fmt.Errorf(`不支持对 %s(%s) 进行运算`, strings.Trim(reflectTypeA.PkgPath()+"."+reflectTypeA.Name(), "."), convertor.ToStringNoError(a))
 	} else if basicTypeA == convertor.BasicType_Invalid {
 		return false, fmt.Errorf("参数 a 无效")
 	}
 	if basicTypeA == convertor.BasicType_Unknown {
-		return false, fmt.Errorf(`不支持对 %s(%s) 进行运算`, strings.Trim(reflectTypeB.PkgPath()+"."+reflectTypeB.Name(), "."), convertor.MustToString(b))
+		return false, fmt.Errorf(`不支持对 %s(%s) 进行运算`, strings.Trim(reflectTypeB.PkgPath()+"."+reflectTypeB.Name(), "."), convertor.ToStringNoError(b))
 	} else if basicTypeB == convertor.BasicType_Invalid {
 		return false, fmt.Errorf("参数 b 无效")
 	}
@@ -56,10 +56,10 @@ func Compare(a, b interface{}, opr string, options ...int) (bool, error) {
 	switch strings.ToLower(opr) {
 	case Operator_In, Operator_NotIn:
 		if basicTypeA == convertor.BasicType_String && basicTypeB == convertor.BasicType_String {
-			return CompareString(convertor.MustToString(a), convertor.MustToString(b), opr, options...)
+			return CompareString(convertor.ToStringNoError(a), convertor.ToStringNoError(b), opr, options...)
 		}
 		if basicTypeB != convertor.BasicType_Slice {
-			return false, fmt.Errorf(`不支持对 %s(%s) 进行 %s 运算`, strings.Trim(reflectTypeB.PkgPath()+"."+reflectTypeB.Name(), "."), convertor.MustToString(b), opr)
+			return false, fmt.Errorf(`不支持对 %s(%s) 进行 %s 运算`, strings.Trim(reflectTypeB.PkgPath()+"."+reflectTypeB.Name(), "."), convertor.ToStringNoError(b), opr)
 		}
 		in := false
 		for i, n := 0, reflectValueB.Len(); i < n; i++ {
@@ -74,10 +74,10 @@ func Compare(a, b interface{}, opr string, options ...int) (bool, error) {
 		return in == (opr == Operator_In), nil
 	case Operator_Contains, Operator_NotContains:
 		if basicTypeA == convertor.BasicType_String && basicTypeB == convertor.BasicType_String {
-			return CompareString(convertor.MustToString(a), convertor.MustToString(b), opr, options...)
+			return CompareString(convertor.ToStringNoError(a), convertor.ToStringNoError(b), opr, options...)
 		}
 		if basicTypeA != convertor.BasicType_Slice {
-			return false, fmt.Errorf(`不支持对 %s(%s) 进行 %s 运算`, strings.Trim(reflectTypeA.PkgPath()+"."+reflectTypeA.Name(), "."), convertor.MustToString(a), opr)
+			return false, fmt.Errorf(`不支持对 %s(%s) 进行 %s 运算`, strings.Trim(reflectTypeA.PkgPath()+"."+reflectTypeA.Name(), "."), convertor.ToStringNoError(a), opr)
 		}
 		in := false
 		for i, n := 0, reflectValueA.Len(); i < n; i++ {
@@ -92,10 +92,10 @@ func Compare(a, b interface{}, opr string, options ...int) (bool, error) {
 		return in == (opr == Operator_Contains), nil
 	case Operator_Eq, Operator_Ueq, Operator_Lt, Operator_Elt, Operator_Gt, Operator_Egt:
 		if basicTypeA == convertor.BasicType_Slice {
-			return false, fmt.Errorf(`不支持对 %s(%s) 进行 %s 运算`, strings.Trim(reflectTypeA.PkgPath()+"."+reflectTypeA.Name(), "."), convertor.MustToString(a), opr)
+			return false, fmt.Errorf(`不支持对 %s(%s) 进行 %s 运算`, strings.Trim(reflectTypeA.PkgPath()+"."+reflectTypeA.Name(), "."), convertor.ToStringNoError(a), opr)
 		}
 		if basicTypeB == convertor.BasicType_Slice {
-			return false, fmt.Errorf(`不支持对 %s(%s) 进行 %s 运算`, strings.Trim(reflectTypeB.PkgPath()+"."+reflectTypeB.Name(), "."), convertor.MustToString(b), opr)
+			return false, fmt.Errorf(`不支持对 %s(%s) 进行 %s 运算`, strings.Trim(reflectTypeB.PkgPath()+"."+reflectTypeB.Name(), "."), convertor.ToStringNoError(b), opr)
 		}
 		if basicTypeA == convertor.BasicType_Nil {
 			return CompareNil(b, opr)
@@ -322,8 +322,8 @@ func compareSimpleObj(t convertor.BasicType, a, b interface{}, opr string, optio
 		}
 		return CompareFloat(valA, valB, opr)
 	case convertor.BasicType_String:
-		valA := convertor.MustToString(a)
-		valB := convertor.MustToString(b)
+		valA := convertor.ToStringNoError(a)
+		valB := convertor.ToStringNoError(b)
 		return CompareString(valA, valB, opr, options...)
 	default:
 		return false, fmt.Errorf("无法识别的运算符: %s", opr)

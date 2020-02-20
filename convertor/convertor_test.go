@@ -16,7 +16,7 @@ type Person struct {
 
 func TestToString(t *testing.T) {
 	var obj map[string]interface{}
-	str := MustToString(obj)
+	str := ToStringNoError(obj)
 	t.Log(jsonUtil.MustMarshalToString([]interface{}{str}))
 }
 

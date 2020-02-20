@@ -38,7 +38,7 @@ func ToBool(a interface{}) (bool, error) {
 		}
 		return false, fmt.Errorf("can't convert string(%s) to bool", str)
 	default:
-		return false, fmt.Errorf("can't convert %s(%v) to bool", strings.Trim(reflectType.PkgPath()+"."+reflectType.Name(), "."), MustToString(a))
+		return false, fmt.Errorf("can't convert %s(%v) to bool", strings.Trim(reflectType.PkgPath()+"."+reflectType.Name(), "."), ToStringNoError(a))
 	}
 }
 
@@ -77,7 +77,7 @@ func ToInt64(a interface{}) (int64, error) {
 		}
 		return 0, fmt.Errorf("can't convert string(%s) to int", str)
 	default:
-		return 0, fmt.Errorf("can't convert %s(%v) to int", strings.Trim(reflectType.PkgPath()+"."+reflectType.Name(), "."), MustToString(a))
+		return 0, fmt.Errorf("can't convert %s(%v) to int", strings.Trim(reflectType.PkgPath()+"."+reflectType.Name(), "."), ToStringNoError(a))
 	}
 }
 
@@ -126,7 +126,7 @@ func ToUint64(a interface{}) (uint64, error) {
 		}
 		return 0, fmt.Errorf("can't convert string(%s) to uint", str)
 	default:
-		return 0, fmt.Errorf("can't convert %s(%v) to uint", strings.Trim(reflectType.PkgPath()+"."+reflectType.Name(), "."), MustToString(a))
+		return 0, fmt.Errorf("can't convert %s(%v) to uint", strings.Trim(reflectType.PkgPath()+"."+reflectType.Name(), "."), ToStringNoError(a))
 	}
 }
 
@@ -173,7 +173,7 @@ func ToFloat64(a interface{}) (float64, error) {
 		}
 		return 0, fmt.Errorf("can't convert string(%s) to float", str)
 	default:
-		return 0, fmt.Errorf("can't convert %s(%v) to float", strings.Trim(reflectType.PkgPath()+"."+reflectType.Name(), "."), MustToString(a))
+		return 0, fmt.Errorf("can't convert %s(%v) to float", strings.Trim(reflectType.PkgPath()+"."+reflectType.Name(), "."), ToStringNoError(a))
 	}
 }
 
@@ -222,52 +222,52 @@ func ToString(a interface{}) (string, error) {
 	}
 }
 
-func MustToString(a interface{}) string {
+func ToStringNoError(a interface{}) string {
 	v, _ := ToString(a)
 	return v
 }
 
-func MustToBool(a interface{}) bool {
+func ToBoolNoError(a interface{}) bool {
 	v, _ := ToBool(a)
 	return v
 }
 
-func MustToInt64(a interface{}) int64 {
+func ToInt64NoError(a interface{}) int64 {
 	v, _ := ToInt64(a)
 	return v
 }
 
-func MustToInt32(a interface{}) int32 {
+func ToInt32NoError(a interface{}) int32 {
 	v, _ := ToInt64(a)
 	return int32(v)
 }
 
-func MustToInt(a interface{}) int {
+func ToIntNoError(a interface{}) int {
 	v, _ := ToInt64(a)
 	return int(v)
 }
 
-func MustToUint64(a interface{}) uint64 {
+func ToUint64NoError(a interface{}) uint64 {
 	v, _ := ToUint64(a)
 	return v
 }
 
-func MustToUint32(a interface{}) uint32 {
+func ToUint32NoError(a interface{}) uint32 {
 	v, _ := ToUint64(a)
 	return uint32(v)
 }
 
-func MustToUint(a interface{}) uint {
+func ToUintNoError(a interface{}) uint {
 	v, _ := ToUint64(a)
 	return uint(v)
 }
 
-func MustToFloat64(a interface{}) float64 {
+func ToFloat64NoError(a interface{}) float64 {
 	v, _ := ToFloat64(a)
 	return v
 }
 
-func MustToFloat32(a interface{}) float32 {
+func ToFloat32NoError(a interface{}) float32 {
 	v, _ := ToFloat64(a)
 	return float32(v)
 }

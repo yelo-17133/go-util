@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------------------
 // 文件监控器，用来实现 “监控某个文件的变化，如果文件被修改则触发回调通知”
 // ------------------------------------------------------------------------------
-package fileUtil
+package fileWatcher
 
 import (
 	"crypto/md5"
@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-func LoadAndWatchFile(path string, onChange func(data []byte, err error) error, d time.Duration) (*time.Ticker, error) {
+func LoadAndWatch(path string, onChange func(data []byte, err error) error, d time.Duration) (*time.Ticker, error) {
 	lastMod, lastToken, data, err := loadFile(path, 0, "")
 	if onChange != nil && (data != nil || err != nil) {
 		err = onChange(data, err)
